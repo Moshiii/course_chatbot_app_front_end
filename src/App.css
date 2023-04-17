@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  --primary: #646cffaa;
 }
 
 .logo {
@@ -12,7 +13,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--primary));
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -39,4 +40,36 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* layout */
+.layout {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+/* login page */
+.login_page {
+  height:500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* navbar */
+nav {
+  display: flex;
+  align-items: start;
+
+}
+header nav {
+  display: flex;
+  gap: 16px;
+  justify-content: end;
+  max-width: 1200px; 
+  margin: 0 auto;
+}
+header nav h1 {
+  margin-right: auto;
 }

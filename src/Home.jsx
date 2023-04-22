@@ -1,8 +1,12 @@
 import {useEffect, useState} from 'react';
 
+import Cookies from 'universal-cookie';
+
+
 const Home = ({ loggedIn, setLoggedIn }) => {
 
   const [loading, setLoading] = useState(false);
+  const cookies = new Cookies();
 
   useEffect(() => {
     let loggedIn = localStorage.getItem('loggedIn');
@@ -30,7 +34,13 @@ const Home = ({ loggedIn, setLoggedIn }) => {
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogout")
+
+    const token = cookies.get('access_token');
+    await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogout", {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    })
       .catch(console.error)
       .then(response => {
         console.log(response)

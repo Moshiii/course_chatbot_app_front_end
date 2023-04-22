@@ -17,16 +17,16 @@ const Home = ({ loggedIn, setLoggedIn }) => {
     e.preventDefault();
     setLoading(true)
 
-    await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogin", { method: 'get', mode: 'cors' })
+    await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogin")
       .catch(console.error)
-      .then((response) => {
-        console.log(response)
-      });
-      // .then(response => response.json())
-      // .then(data => {
-      //   console.log(data)
-      //   // window.location.href = data.auth_url;
+      // .then((response) => {
+      //   console.log(response)
       // });
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        window.location.href = data.auth_url;
+      });
   };
 
   const handleLogout = async (e) => {

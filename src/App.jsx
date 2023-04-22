@@ -1,9 +1,13 @@
-import React from 'react';
+import {useState} from 'react';
+import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
+
 import Chat from './Chat';
 import Home from './Home';
 
-import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom';
 const App = () => {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <BrowserRouter>
       <header>
@@ -14,13 +18,12 @@ const App = () => {
       </header>  
       <main>
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="chat" element={<Chat/>}/>        
+          <Route path="/" element={<Home loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>
+          <Route path="chat" element={<Chat loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>}/>       
         </Routes>        
       </main>
     </BrowserRouter>
-
-  )
-}
+  );
+};
 
 export default App;

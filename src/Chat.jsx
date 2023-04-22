@@ -52,7 +52,7 @@ const Chat =({ loggedIn, setLoggedIn }) => {
   const processMessageToChatGPT = async (chatMessages) => {
     
     const token = cookies.get('access_token');
-    console.log("token1" + token)
+  
     let apiMessages = chatMessages.map((messageObject) => {
       let role = "";
       if (messageObject.sender === "ChatGPT") {

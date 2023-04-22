@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react';
 
 import Cookies from 'universal-cookie';
 
-
 const Home = ({ loggedIn, setLoggedIn }) => {
 
   const [loading, setLoading] = useState(false);
@@ -23,12 +22,11 @@ const Home = ({ loggedIn, setLoggedIn }) => {
 
     await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogin")
       .catch(console.error)
-      // .then((response) => {
-      //   console.log(response)
-      // });
       .then(response => response.json())
-      .then(data => {
-        console.log(data)
+      .then((data) => {
+        localStorage.setItem('loggedIn', true);
+        setLoggedIn(true);
+        
         window.location.href = data.auth_url;
       });
   };

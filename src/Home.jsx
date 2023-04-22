@@ -27,7 +27,18 @@ const Home = ({ loggedIn, setLoggedIn }) => {
       //   console.log(data)
       //   // window.location.href = data.auth_url;
       // });
-  }
+  };
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogout")
+      .catch(console.error)
+      .then(response => {
+        console.log(response)
+        localStorage.removeItem('loggedIn');
+        setLoggedIn(false);
+      });
+  };
 
   return (
     <div className="layout">

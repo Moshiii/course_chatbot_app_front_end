@@ -17,7 +17,7 @@ const Home = ({ loggedIn, setLoggedIn }) => {
     e.preventDefault();
     setLoading(true)
 
-    await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogin")
+    await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogin", { method: 'get', mode: 'cors' })
       .catch(console.error)
       .then((response) => {
         console.log(response)

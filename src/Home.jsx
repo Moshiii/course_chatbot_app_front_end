@@ -43,6 +43,7 @@ const Home = ({ loggedIn, setLoggedIn }) => {
       .catch(console.error)
       .then(response => {
         console.log(response)
+        cookies.remove('allMessages', { path: '/chat' });
         localStorage.removeItem('loggedIn');
         setLoggedIn(false);
       });

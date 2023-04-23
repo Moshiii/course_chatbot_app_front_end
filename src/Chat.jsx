@@ -8,33 +8,34 @@ import Cookies from 'universal-cookie';
 
 const Chat =({ loggedIn, setLoggedIn }) => {
 
-  const [isTyping, setIsTyping] = useState(false);
-  const [messages, setMessages] = useState([
+  const welcomeMsg = [
     {
       message: "Hello, I'm your professor",     
       sentTime: "just now",
       sender: "ChatGPT"
     }
-  ]);
+  ];
+  const [isTyping, setIsTyping] = useState(false);
+  const [messages, setMessages] = useState(welcomeMsg);
 
   const cookies = new Cookies();
 
   useEffect(() => {
 
-    let allMessages = cookies.get('allMessages');
-
-    allMessages && setMessages(allMessages);
-
     let loggedIn = localStorage.getItem('loggedIn');
 
-    if(loggedIn) {
+    if(loggedIn) {     
+      let allMessages = cookies.get('allMessages');
+      if(allMessages) {
+        setMessages(allMessages);
+      }
+
       setLoggedIn(true);
-    }
+    } 
   },[]);
 
   const handleSend = async (message) => {
-    console.log(message)
-    
+
     const newMessage = {
       message,
       direction: 'outgoing',
@@ -64,24 +65,22 @@ const Chat =({ loggedIn, setLoggedIn }) => {
     });
 
     const apiRequestBody = [...apiMessages];
-    console.log(apiRequestBody);
 
-     await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/openai", 
+    await fetch("https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/openai", 
     {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,       
       },
-      body: JSON.stringify(apiRequestBody)
-    }).then((data) => {
-      return data.json();
-    }).then((data) => {
-      console.log(data);
-      setMessages([...chatMessages, {
-        message: data.choices[0].message.content,
-        sender: "ChatGPT"
-      }]);
-      setIsTyping(false);
+      body: JSON.stringify(apiRequestBody)})
+        .catch(console.error)
+        .then(response => (response.json()))
+        .then((data) => {
+          setMessages([...chatMessages, {
+            message: data[data.length - 1].content,
+            sender: "ChatGPT"
+          }]);
+          setIsTyping(false);
     });
   };
 

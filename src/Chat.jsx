@@ -98,7 +98,7 @@ const Chat =({ loggedIn, setLoggedIn }) => {
                   return <Message key={i} model={message} />
                 })}
               </MessageList>
-              <MessageInput placeholder="Type message here" onSend={handleSend} />        
+              <MessageInput attachButton={false} placeholder="Type message here" onSend={handleSend} />        
             </ChatContainer>
           </MainContainer> 
           : <div>please log in first</div>

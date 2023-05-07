@@ -1,5 +1,6 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import "./App.css";
 
 import Navbar from "./Navbar";
@@ -7,7 +8,6 @@ import Chat from "./Chat";
 import Home from "./Home";
 // import Login from "./Login";
 import Cookies from "universal-cookie";
-
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -23,10 +23,8 @@ const App = () => {
     }
   }, []);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     setLoading(true);
-
     await fetch(
       "https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogin"
     )
@@ -40,9 +38,8 @@ const App = () => {
       });
   };
 
-  const handleLogout = async (e) => {
+  const handleLogout = async () => {
     // Perform the logout logic here
-    e.preventDefault();
 
     const token = cookies.get("access_token");
     await fetch(
@@ -64,26 +61,26 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <header>
-        <Navbar
-          loggedIn={loggedIn}
-          onLogout={handleLogout}
-          onLogin={handleLogin}
-        />
-      </header>
-      <main>
-        <Routes>
-          <Route
-            path="/"
-            element={<Home loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
-          />
+      {loading ? (
+        <p>loading...</p>
+      ) : (
+        <div className="banner">
+          <div className="nav_item">
+            <Navbar
+              loggedIn={loggedIn}
+              onLogout={handleLogout}
+              onLogin={handleLogin}
+            />
+          </div>
+          <main className="nav_msg">
+            <Routes>
+              <Route path="/" element={<Home />} />
 
-          <Route
-            path="chat"
-            element={<Chat loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
-          />
-        </Routes>
-      </main>
+              <Route path="chat" element={<Chat loggedIn={loggedIn} />} />
+            </Routes>
+          </main>
+        </div>
+      )}
     </BrowserRouter>
   );
 };

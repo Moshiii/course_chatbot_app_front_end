@@ -11,8 +11,11 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import Cookies from "universal-cookie";
 import styles from "./styles.module.css";
+import "./App.css";
+import "./index.css";
 
-const Chat = ({ loggedIn, setLoggedIn }) => {
+
+const Chat = ({ loggedIn }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -90,33 +93,34 @@ const Chat = ({ loggedIn, setLoggedIn }) => {
   };
 
   return (
-    <div className={styles.shade}>
-      <div className={styles.blackboard}>
-        <div className={styles.form}>
-          <div className="layout">
+    <div>
+      <div className={loggedIn ? styles.blackboard : null}>
+        <div className={loggedIn ? styles.form : null}>
+          <div className="chat_box">
             {loggedIn ? (
-              <MainContainer className="chat-main-container">
-                <ChatContainer className="chat-container">
-                  <MessageList
-                    scrollBehavior="smooth"
-                    typingIndicator={
-                      isTyping ? (
-                        <TypingIndicator content="Virtual Professor is typing" />
-                      ) : null
-                    }
-                  >
-                    {messages.map((message, i) => {
-                      return <Message key={i} model={message} />;
-                    })}
-                  </MessageList>
-                  <MessageInput
-                    placeholder="Please select an option first"
-                    onSend={handleSend}
-                    attachButton={false}
-                    sendButton={option ? true : false}
-                  />
-                </ChatContainer>
-
+              <div className="layout">
+                <MainContainer className="chat-main-container">
+                  <ChatContainer className="chat-container">
+                    <MessageList
+                      scrollBehavior="smooth"
+                      typingIndicator={
+                        isTyping ? (
+                          <TypingIndicator content="Virtual Professor is typing" />
+                        ) : null
+                      }
+                    >
+                      {messages.map((message, i) => {
+                        return <Message key={i} model={message} />;
+                      })}
+                    </MessageList>
+                    <MessageInput
+                      placeholder="Please select an option first"
+                      onSend={handleSend}
+                      attachButton={false}
+                      sendButton={option ? true : false}
+                    />
+                  </ChatContainer>
+                </MainContainer>
                 <ExpansionPanel
                   className="expansion-panel"
                   title="Options"
@@ -125,9 +129,9 @@ const Chat = ({ loggedIn, setLoggedIn }) => {
                   <button onClick={handleFocus}>Focus</button>
                   <button onClick={handleExplore}>Explore</button>
                 </ExpansionPanel>
-              </MainContainer>
+              </div>
             ) : (
-              <div>please log in first</div>
+              <p>please login first</p>
             )}
           </div>
         </div>

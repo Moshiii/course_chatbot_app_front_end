@@ -14,6 +14,13 @@
   -webkit-text-size-adjust: 100%;
 }
 
+body {
+  background-image: url("https://images.pexels.com/photos/906150/pexels-photo-906150.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -71,3 +78,5 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+

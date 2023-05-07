@@ -1,25 +1,30 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "./styles.module.css"
 
 const Navbar = ({ loggedIn, onLogout, onLogin }) => {
   return (
-    <nav>
-      <ul>
-        <li>Home</li>
+    
+      <div>
         {loggedIn ? (
-          <div>
-            <li onClick={onLogout}>Logout</li>
-            <NavLink to="chat">Chat</NavLink>
+          <div className={styles.navbar}>
+            <li>
+              <NavLink to="chat">Chat</NavLink>
+            </li>
+            <li  onClick={onLogout}>
+              Logout
+            </li>
           </div>
         ) : (
-          <li>
-            <NavLink to="login" onClick={onLogin}>
-              Login
-            </NavLink>
-          </li>
+          <div className={styles.navbar}>
+            <li >Home</li>
+            <li >
+              <NavLink onClick={onLogin}>Login</NavLink>
+            </li>
+          </div>
         )}
-      </ul>
-    </nav>
+      </div>
+    
   );
 };
 

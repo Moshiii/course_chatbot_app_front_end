@@ -13,7 +13,6 @@ import Cookies from "universal-cookie";
 import styles from "./styles.module.css";
 
 const Chat = ({ loggedIn, setLoggedIn }) => {
-
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -25,7 +24,6 @@ const Chat = ({ loggedIn, setLoggedIn }) => {
   const [option, setOption] = useState("");
 
   const cookies = new Cookies();
-  
 
   const handleSend = async (message) => {
     console.log(message);
@@ -91,8 +89,7 @@ const Chat = ({ loggedIn, setLoggedIn }) => {
     setOption("Explore");
   };
 
-
-  return  (
+  return (
     <div className={styles.shade}>
       <div className={styles.blackboard}>
         <div className={styles.form}>
@@ -136,7 +133,7 @@ const Chat = ({ loggedIn, setLoggedIn }) => {
         </div>
       </div>
     </div>
-  );;
+  );
 };
 
 export default Chat;

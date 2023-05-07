@@ -75,7 +75,6 @@ const App = () => {
           <main className="nav_msg">
             <Routes>
               <Route path="/" element={<Home />} />
-
               <Route path="chat" element={<Chat loggedIn={loggedIn} />} />
             </Routes>
           </main>

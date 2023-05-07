@@ -94,6 +94,9 @@ const Chat = ({ loggedIn }) => {
 
   return (
     <div>
+      <p className={styles.notice}>In using the system,the student code of conduct apply, <br/>
+      please do not abuse the system. Please always refer to you study material and textbook for <br/> 
+      answer and verification of the correctness of the answer the system provides.</p>
       <div className={loggedIn ? styles.blackboard : null}>
         <div className={loggedIn ? styles.form : null}>
           <div className="chat_box">
@@ -105,7 +108,7 @@ const Chat = ({ loggedIn }) => {
                       scrollBehavior="smooth"
                       typingIndicator={
                         isTyping ? (
-                          <TypingIndicator content="Virtual Professor is typing" />
+                          <TypingIndicator content="Professor is typing" />
                         ) : null
                       }
                     >
@@ -114,7 +117,7 @@ const Chat = ({ loggedIn }) => {
                       })}
                     </MessageList>
                     <MessageInput
-                      placeholder="Please select an option first"
+                      placeholder="Type or select a method to get started"
                       onSend={handleSend}
                       attachButton={false}
                       sendButton={option ? true : false}
@@ -131,7 +134,7 @@ const Chat = ({ loggedIn }) => {
                 </ExpansionPanel>
               </div>
             ) : (
-              <p>please login first</p>
+              <p>Welcome to my office. I am happy to answer you question. Please login first.</p>
             )}
           </div>
         </div>

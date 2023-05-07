@@ -3,9 +3,9 @@ import React from "react";
 const Home = () => {
   return (
     <div className="nav_msg">
-      welcome to the chatbot, please login first so that you can chat with your
-      professor!
+      Welcome to my office. I am happy to answer you question. Please login first.
     </div>
+    
   );
 };
 

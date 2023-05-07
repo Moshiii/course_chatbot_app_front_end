@@ -19,7 +19,7 @@ const Chat = ({ loggedIn }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I'm your professor",
+      message: "Hello, I'm your virtual professor, how may I help you?",
       sentTime: "just now",
       sender: "ChatGPT",
     },

@@ -15,7 +15,8 @@
 }
 
 body {
-  background-image: url("https://images.pexels.com/photos/906150/pexels-photo-906150.jpeg");
+  /* background-image: url("https://images.pexels.com/photos/906150/pexels-photo-906150.jpeg"); */
+  background-image: url("https://cdn.midjourney.com/e78dd215-8efb-432e-877a-39fa85b73e7c/grid_0.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

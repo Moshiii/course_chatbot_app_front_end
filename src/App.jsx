@@ -26,7 +26,7 @@ const App = () => {
   const handleLogin = async () => {
     setLoading(true);
     await fetch(
-      "https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogin"
+      "https://www.profanswers.com:5000/api/discordLogin"
     )
       .catch(console.error)
       .then((response) => response.json())
@@ -43,7 +43,7 @@ const App = () => {
 
     const token = cookies.get("access_token");
     await fetch(
-      "https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/discordLogout",
+      "https://www.profanswers.com:5000/api/discordLogout",
       {
         headers: {
           Authorization: `Bearer ${token}`,

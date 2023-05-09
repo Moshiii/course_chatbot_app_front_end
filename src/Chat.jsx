@@ -63,7 +63,7 @@ const Chat = ({ loggedIn }) => {
     console.log(apiRequestBody);
 
     await fetch(
-      "https://ec2-44-212-203-117.compute-1.amazonaws.com:5000/api/openai",
+      "https://www.profanswers.com:5000/api/openai",
       {
         method: "POST",
         headers: {

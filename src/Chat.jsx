@@ -91,12 +91,15 @@ const Chat = ({ loggedIn }) => {
   const handleExplore = () => {
     setOption("Explore");
   };
+  const handleNone = () => {
+    setOption("None");
+  };
 
   return (
     <div>
-      <p className={styles.notice}>In using the system,the student code of conduct apply, <br/>
-      please do not abuse the system. Please always refer to you study material and textbook for <br/> 
-      answer and verification of the correctness of the answer the system provides.</p>
+      {loggedIn ? (<p >In using the system,the student code of conduct apply, <br />
+        please do not abuse the system. Please always refer to you study material and textbook for <br />
+        answer and verification of the correctness of the answer the system provides.</p>) : null}
       <div className={loggedIn ? styles.blackboard : null}>
         <div className={loggedIn ? styles.form : null}>
           <div className="chat_box">
@@ -131,6 +134,7 @@ const Chat = ({ loggedIn }) => {
                 >
                   <button onClick={handleFocus}>Focus</button>
                   <button onClick={handleExplore}>Explore</button>
+                  <button onClick={handleNone}>None</button>
                 </ExpansionPanel>
               </div>
             ) : (
